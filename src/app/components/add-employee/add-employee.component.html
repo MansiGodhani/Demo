@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h4> Add Employee </h4>
+  <div class="alert alert-danger" *ngIf="errMessage">
+    Employee Id Already Exits
+  </div>
+  <form [formGroup]="empForm" (ngSubmit)="empForm.valid && submit()" novalidate enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="empId"> Employee Id </label>
+      <input id="empId" type="text" name="EmpId" class="form-control" formControlName="EmpId" >
+    </div>
+    <div class="form-group">
+      <label for="name"> Employee Name </label>
+      <input id="name" type="text" name="name" class="form-control" formControlName="Name" >
+    </div>
+    <div class="form-group">
+      <label for="empCode"> Employee Code </label>
+      <input id="empCode" type="email" name="empCode" class="form-control" formControlName="EmpCode" >
+    </div>
+    <div class="form-group">
+      <label for="salary"> Salary </label>
+      <input id="salary" type="text" name="salary" class="form-control" formControlName="Salary">
+    </div>
+    <pre></pre>
+    <div>
+      <button class="btn btn-primary" type="submit" [disabled]="empForm.invalid">Submit</button>
+      <button class="btn btn-secondary m-2" type="reset">Cancel</button>
+    </div>
+
+  </form>
+
+</div>
+

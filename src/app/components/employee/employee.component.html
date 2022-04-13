@@ -1,0 +1,48 @@
+<!--  employee details-->
+<div class="container mt-5">
+  <div class="d-flex">
+    <h4 class="m-auto">Employee Details</h4>
+    <div class="d-flex">
+      <button class="btn btn-primary float-end" routerLink="addEmployees" routerLinkActive="active">Add Employee</button>
+    </div>
+  </div>
+  <table class="table mt-3">
+    <thead>
+    <tr>
+      <th scope="col">Employee ID</th>
+      <th scope="col"> Name </th>
+      <th scope="col"> Employee Code </th>
+      <th scope="col"> Salary </th>
+      <th scope="col" colspan="2"> Actions </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let list of empList;">
+      <th scope="row">{{ list.EmpId}}</th>
+      <td> {{ list.Name }} </td>
+      <td> {{ list.EmpCode}} </td>
+      <td> {{ list.Salary}} </td>
+      <td><button class="btn btn-warning" (click)="editEmp(list.EmpId)">Edit</button></td>
+      <td><button class="btn btn-danger" (click)="deleteEmp(content,list.EmpId)"> Delete </button> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!--Using delete confirmation popup model -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure to delete this?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger " (click)="c('yes')">Delete</button>
+    <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+  </div>
+</ng-template>
+
+
